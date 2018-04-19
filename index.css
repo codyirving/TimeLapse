@@ -3,6 +3,26 @@
 
 }
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
 /* Color Pallette */
 
 :root {
@@ -17,12 +37,11 @@
 
 body {
   background-color: #0b7202;
-  /* background-image: url(blue-background-nature-5.jpg); */
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;
   font-weight: normal;
-  color: gray;
+  color: white;
   letter-spacing: 1pt;
   word-spacing: 2pt;
   font-size: 18px;
@@ -91,11 +110,22 @@ fieldset {
   height: 300px;
   width: 300px;
 }
-
-
-
-
-
+.app-description {
+  text-align: left;
+  line-height: 1.5;
+}
+.delete-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 900;
+}
+.delete-link:hover {
+  color: black;
+}
+footer {
+  margin: 20px;
+  border-top: 2px solid white;
+}
 
 /*********************/
 /* START GRID SYSTEM */
@@ -138,7 +168,7 @@ fieldset {
   width: 100%;
 }
 /* Non-mobile, grid */
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 800px) {
   /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;

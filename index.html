@@ -10,202 +10,50 @@
 </head>
 
 <body>
-    <script src='index.js'></script>
+
+    <header role="banner">
+        <h1>TIME LAPSE GIF MAKER 3000</h1>
+    </header>
+    <main role="main" aria-live="assertive">
+        <section title="Animated GIF" class="row">
+            <img id="output" role="none">
+        </section>
+
+        <section title="Application Instructions" class="row app-description">
+            Operation is simple:
+            <br> 1.) Click Add A Photo
+            <br> 2.) Take/add a photo and repeat.
+            <br> 3.) When finished, wait approx 60 seconds for IMGUR to process uploads, and refresh the page.  The animated gif will appear above.
+            <br> 4.) * Delete: to remove a picture from the animated gif sequence, just click the DELETE link associated with
+            the picture.
+            <br> * Deletion may take up to 2 minutes to correctly update IMGUR API. Please be patient while refreshing/waiting.
+            <br>
+
+        </section>
+
+
+        <section title="Add a Photo" class="row">
+            <form role="form" action="post">
+                <input id='file-input' class='file-input' name='file' type="file" accept="image/*" capture="environment">
+                <label for="file-input" aria-label="Add Photo Button">Add A Photo</label>
+            </form>
+        </section>
+
+        <section title="Thumbnail list" class="row">
+            <div class="thumbs"></div>
+        </section>
+    </main>
+    <div class="row">
+        <a class="link"></a>
+    </div>
+    <footer role="contentinfo">Copyright 2018 - Cody Irving</footer>
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="gifshot.js"></script>
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <link rel="stylesheet" href="https://cdn.rawgit.com/ctrl-freaks/freezeframe.js/master/build/css/freezeframe_styles.min.css">
     <script type="text/javascript" src="https://cdn.rawgit.com/ctrl-freaks/freezeframe.js/master/build/js/freezeframe.pkgd.js"></script>
-    <header class="header">TIME LAPSE GIF MAKER 3000</header>
-    <div class="row">
-        <img id="output">
-    </div>
-
-
-
-    <div class="row">
-        <form action="post">
-            <input id='file-input' class='file-input' name='file' type="file" accept="image/*" capture="environment">
-            <label for="file-input">Add A Photo</label>
-
-
-        </form>
-    </div>
-    <main role="main" aria-live="assertive">
-        <div class="row">
-            <div class="thumbs"></div>
-        </div>
-    </main>
-    <div class="row">
-        <a class="link">IMG</a>
-    </div>
-
-    <script>
-        const output = document.getElementById('output');
-        let file = null;
-        //const albumHash1 = 'dFr53KUfASXSNId';
-
-        //const albumHash2 = 'P70VjzFc6tlVdBD';
-        
-        const albumHash = 'Rnhq5VzyKXZ0yWu';
-        const clientId = 'b131c17cf8131dd';
-        const albumId = 'JbYV9';
-
-        function doSomethingWithFiles(fileList) {
-            for (let i = 0; i < fileList.length; i++) {
-                if (fileList[i].type.match(/^image\//)) {
-                    file = fileList[i];
-                    break;
-                }
-            }
-            if (file !== null) {
-                output.src = URL.createObjectURL(file);
-            }
-
-            //START IMGUR upload
-            var form = new FormData();
-            form.append("image", file);
-
-            form.append("album", albumHash);
-            //Client Secret
-            // 9b3da4d90d31dd7b5e2fa66622ff0dc21c06d2c5
-
-
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://api.imgur.com/3/image",
-                "method": "POST",
-                "headers": {
-                    "Authorization": `Client-ID ${clientId}`
-                },
-                "processData": false,
-                "contentType": false,
-                "mimeType": "multipart/form-data",
-                "data": form
-            }
-
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-                console.log(typeof (response));
-                const responseObject = JSON.parse(response);
-                console.log("responsObject data.link: " + responseObject.data.link);
-                $('.link').attr("href", responseObject.data.link);
-                $('.link').html(responseObject.data.link + " deletehash:" + responseObject.data.deletehash);
-
-                setTitle(responseObject.data.deletehash);
-            });
-
-
-        }
-
-        function setTitle(title) {
-
-            //title should be deletehash
-            let form = new FormData();
-            form.append("title", title);
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": `https://api.imgur.com/3/image/${title}`,
-                "method": "POST",
-                "headers": {
-                    "Authorization": `Client-ID ${clientId}`
-                },
-                "processData": false,
-                "contentType": false,
-                "mimeType": "multipart/form-data",
-                "data": form
-            }
-            $.ajax(settings).done(function (response) {
-                console.log(response);
-
-            });
-
-
-        }
-
-
-        function removePic(deleteHash) {
-            let confirm = confirm("Delete Picture? This cannot be undone.");
-            if (confirm) {
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": `https://api.imgur.com/3/image/${deleteHash}`,
-                    "method": "DELETE",
-                    "headers": {
-                        "Authorization": `Client-ID ${clientId}`
-                    }
-                }
-
-                $.ajax(settings).done(function (response) {
-                    console.log(response);
-                });
-
-            }
-
-
-
-        }
-
-
-
-
-
-        //END IMGUR upload
-
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": `https://api.imgur.com/3/album/${albumId}/images`,
-            "method": "GET",
-            "headers": {
-                "Authorization": `Client-ID ${clientId}`
-            }
-        }
-
-        let gifArray = [];
-
-        $.ajax(settings).done(function (response) {
-            console.log("ALBUM RESPONSE TYPEOF " + typeof (response));
-            let albumImages = response.data;
-            let count = 0;
-            albumImages.forEach(element => {
-                console.log("Element " + element.link);
-                const imageLink = element.link;
-                gifArray.push(imageLink);
-                $('.thumbs').append(`<div class='col-3'><a href='${imageLink}'><img src='${imageLink}' alt='image ${++count}'></a><br><a href=javascript:removePic('${element.title}')>DELETE</a></div>`);
-            });
-            console.log(response);
-            gifshot.createGIF({
-                'images': gifArray
-            }, function (obj) {
-                if (!obj.error || true) {
-                    console.log('IMAGE ARRAY LENGTH: ' + gifArray.length);
-                    var image = obj.image;
-                    //animatedImage = document.createElement('img');
-                    //animatedImage.src = image;
-                    //document.body.appendChild(animatedImage);
-                    var gifOutput = document.getElementById('output');
-                    gifOutput.src = image;
-
-
-
-                }
-                console.log("ERROR: " + obj.errorMsg);
-            });
-            $('#output').freezeframe();
-        });
-
-    </script>
-    <script>
-        const fileInput = document.getElementById('file-input');
-        fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
-
-    </script>
-
+    <script src='index.js'></script>
 </body>
 
 </html>
