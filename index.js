@@ -136,26 +136,12 @@ $.ajax(settings).done(function(response) {
  
 });
 //FREEZEFRAME Library
-async function runFF() {
+
     $('#output').freezeframe();
-//     await sleep(3000);
-
-//    var third = new freezeframe("#output").capture().setup();
 
 
-//    $('#output').mouseenter(third.release()).mouseleave(third.trigger());
-  
-}
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  
-  async function demo() {
-    console.log('Taking a break...');
-    await sleep(2000);
-    console.log('Two second later');
-  }
+
 
 
 
