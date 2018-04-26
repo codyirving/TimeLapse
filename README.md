@@ -2,8 +2,7 @@
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
-![Screenshot](https://i.imgur.com/vkigvTW.gif
- "Screenshot")
+![Screenshot](https://im3.ezgif.com/tmp/ezgif-3-45d436306d.gif "Screenshot")
 
 ## Getting Started
 
