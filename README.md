@@ -27,7 +27,7 @@ Navigate to index.html
 ## Built With
 
 * [gifshot](https://github.com/yahoo/gifshot) - The animated gif library used
-* [jQuery](https://github.com/jquery/jquery) - Dependency Management
+* [jQuery](https://github.com/jquery/jquery) - JavaScript Library
 
 ## Authors
 
