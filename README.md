@@ -2,6 +2,8 @@
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
+![Screenshot](https://im3.ezgif.com/tmp/ezgif-3-45d436306d.gif "Screenshot")
+
 ## Getting Started
 
 Create an [IMGUR](https://imgur.com/) account if you do not have one and copy your Client ID. (See developer tools below)
