@@ -1,14 +1,19 @@
-# GifMaker 3000
+# TimeLapse GifMaker 3000
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
 ## Getting Started
 
 Create an IMGUR account if you do not have one and copy your Client ID. (See developer tools below)
+
 Use Postman and Client ID to retrieve album ID and album deletehash. (See developer tools below)
+
 Copy files to your host.
+
 Paste in your IMGUR Client ID, Album ID and Albumhash/Deletehash into index.js section marked // - EDIT - //.
+
 Save files.
+
 Naviate to index.html and have fun!
 
 ### Installing
@@ -30,6 +35,7 @@ Navigate to index.html
 ## Developer tools
 
 IMGUR account needed to access Client ID and create albums.
+
 Postman is recommended to use the IMGUR API to create new albums and view JSON responses to retrieve ID and albumhash.
 
 ## Built With
