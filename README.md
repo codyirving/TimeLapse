@@ -4,8 +4,11 @@ Quickly and easily create animated gifs with your phone's camera, or upload on d
 
 ## Getting Started
 
+Create an IMGUR account if you do not have one and copy your Client ID. (See developer tools below)
+Use Postman and Client ID to retrieve album ID and album deletehash. (See developer tools below)
 Copy files to your host.
-Paste in your IMGUR Client ID, Album ID and Albumhash/Deletehash into index.js.
+Paste in your IMGUR Client ID, Album ID and Albumhash/Deletehash into index.js section marked // - EDIT - //.
+Save files.
 Naviate to index.html and have fun!
 
 ### Installing
@@ -14,7 +17,7 @@ A step by step series of examples that tell you have to get a development env ru
 
 Copy all source files to host directory.
 
-Edit index.html and add your IMGUR ie:
+Edit index.js and add your IMGUR ie:
 
 ```
 const albumHash = "UsmMMlT45mNML8U";
@@ -23,6 +26,11 @@ const albumId = "2bWuahp";
 ```
 
 Navigate to index.html
+
+## Developer tools
+
+IMGUR account needed to access Client ID and create albums.
+Postman is recommended to use the IMGUR API to create new albums and view JSON responses to retrieve ID and albumhash.
 
 ## Built With
 
