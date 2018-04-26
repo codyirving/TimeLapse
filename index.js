@@ -135,11 +135,6 @@ $.ajax(settings).done(function(response) {
   );
  
 });
-//FREEZEFRAME Library
-
-    $('#output').freezeframe();
-
-
 
 
 
