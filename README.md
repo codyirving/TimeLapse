@@ -4,7 +4,7 @@ Quickly and easily create animated gifs with your phone's camera, or upload on d
 
 ## Getting Started
 
-Create an IMGUR account if you do not have one and copy your Client ID. (See developer tools below)
+Create an [IMGUR](https://imgur.com/) account if you do not have one and copy your Client ID. (See developer tools below)
 
 Use [Postman](https://www.getpostman.com/) and Client ID to retrieve album ID and album deletehash. (See developer tools below)
 
@@ -34,7 +34,7 @@ Navigate to index.html
 
 ## Developer tools
 
-IMGUR account needed to access Client ID and create albums.
+[IMGUR](https://imgur.com/) account needed to access Client ID and create albums.
 
 [Postman](https://www.getpostman.com/) is recommended to use the IMGUR API to create new albums and view JSON responses to retrieve ID and albumhash.
 
