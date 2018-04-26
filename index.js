@@ -1,7 +1,8 @@
 const output = document.getElementById("output");
 let file = null;
 
-
+// - EDIT - //
+// Paste your own ID's here //
 const albumHash = "Rnhq5VzyKXZ0yWu";
 const clientId = "b131c17cf8131dd";
 const albumId = "JbYV9";
