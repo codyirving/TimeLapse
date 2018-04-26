@@ -2,6 +2,9 @@
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
+![Screenshot](https://github.com/codyirving/TimeLapse/blob/master/screenshot.webm
+ "Screenshot")
+
 ## Getting Started
 
 Create an [IMGUR](https://imgur.com/) account if you do not have one and copy your Client ID. (See developer tools below)
