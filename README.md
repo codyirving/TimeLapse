@@ -1,4 +1,4 @@
-# TimeLapse GifMaker 3000
+# TimeLapse GifMaker
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
