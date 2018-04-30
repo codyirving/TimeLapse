@@ -2,7 +2,7 @@
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
-![Screenshot](https://im3.ezgif.com/tmp/ezgif-3-45d436306d.gif "Screenshot")
+![Screenshot](https://i.imgur.com/azbQS85.gif "Screenshot")
 
 ## Getting Started
 
@@ -19,8 +19,6 @@ Save files.
 Naviate to index.html and have fun!
 
 ### Installing
-
-A step by step series of examples that tell you have to get a development env running
 
 Copy all source files to host directory.
 
