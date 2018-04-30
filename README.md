@@ -32,6 +32,10 @@ const albumId = "2bWuahp";
 
 Navigate to index.html
 
+## Live Demo
+
+See a live demo at [http://codyi.mobi/](http://codyi.mobi)
+
 ## Developer tools
 
 [IMGUR](https://imgur.com/) account needed to access Client ID and create albums.
