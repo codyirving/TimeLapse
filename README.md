@@ -1,8 +1,8 @@
-# TimeLapse GifMaker 3000
+# TimeLapse GifMaker
 
 Quickly and easily create animated gifs with your phone's camera, or upload on desktop.
 
-![Screenshot](https://im3.ezgif.com/tmp/ezgif-3-45d436306d.gif "Screenshot")
+![Screenshot](https://i.imgur.com/azbQS85.gif "Screenshot")
 
 ## Getting Started
 
@@ -20,8 +20,6 @@ Naviate to index.html and have fun!
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
 Copy all source files to host directory.
 
 Edit index.js and add your IMGUR ie:
@@ -33,6 +31,10 @@ const albumId = "2bWuahp";
 ```
 
 Navigate to index.html
+
+## Live Demo
+
+See a live demo at [http://codyi.mobi/](http://codyi.mobi)
 
 ## Developer tools
 
