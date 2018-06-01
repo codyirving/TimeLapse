@@ -1,5 +1,26 @@
 const output = document.getElementById("output");
 let file = null;
+let fileArray = {
+  inputArray: ["empty"],
+  addArray: function(incomingArray) {
+    console.log("Addarray: " + isArray(incomingArray));
+    this.inputArray = incomingArray;
+    return this;
+  },
+  filterForImages: function() {
+    console.log("filter: " + isArray(this.inputArray));
+    this.inputArray = this.inputArray.filter(isImage);
+    return this;
+  },
+  makeObjectURL: function() {
+    if (this.length > 0) {
+      return URL.createObjectURL(file);
+    }
+  }
+};
+function isArray(myArray) {
+  return myArray.constructor.toString().indexOf("Array") > -1;
+}
 
 // - EDIT - //
 // Paste your own ID's here //
@@ -7,23 +28,43 @@ const albumHash = "Rnhq5VzyKXZ0yWu";
 const clientId = "b131c17cf8131dd";
 const albumId = "JbYV9";
 
-//FILEPICKER and IMGUR UPLOAD
-function doSomethingWithFiles(fileList) {
-  for (let i = 0; i < fileList.length; i++) {
-    if (fileList[i].type.match(/^image\//)) {
-      file = fileList[i];
-      break;
-    }
+function isImage(image) {
+  return image.type.match(/^image\//);
+}
+function filterForImages(fileList) {
+  //get files that are images
+  console.log(
+    "dosomething: " + fileList.length + " isArray:" + isArray(fileList)
+  );
+
+  return fileList.filter(isImage);
+}
+File.prototype.makeObjectURL = function() {
+  console.log("prototype: " + this + " URL: " + URL.createObjectURL(this));
+  if (this.length > 0) {
+    return URL.createObjectURL(this);
   }
-  if (file !== null) {
-    output.src = URL.createObjectURL(file);
+};
+
+function doSomethingWithImage(inputFile) {
+  //assume inputFileArray is FileList
+
+  //var filteredArray = inputFileArray.filter(isImage);
+
+  console.log("inputfile.type:" + inputFile.type);
+
+  if (!inputFile.type.match(/^image\//)) {
+    alert("Sorry, please choose a valid image file.");
+    return null;
   }
 
+  file = inputFile;
+  output.src = inputFile.makeObjectURL();
+  console.log("OUTPUT SRC: " + output.src);
 
   var form = new FormData();
   form.append("image", file);
   form.append("album", albumHash);
-  
 
   //IMGUR UPLOAD
   var settings = {
@@ -93,6 +134,7 @@ function removePic(deleteHash) {
 }
 
 //GET ALBUM AND DISPLAY IMAGES
+
 var settings = {
   async: true,
   crossDomain: true,
@@ -105,13 +147,13 @@ var settings = {
 
 let gifArray = [];
 
-$.ajax(settings).done(function(response) {
+let anigif = $.ajax(settings).done(function(response) {
   let albumImages = response.data;
   let count = 0;
   albumImages.forEach(element => {
     let imageLink = element.link;
     //alter IMGUR link to present medium size jpg
-    imageLink = imageLink.replace(".jpg","m.jpg");
+    imageLink = imageLink.replace(".jpg", "m.jpg");
     gifArray.push(imageLink);
     $(".thumbs").append(
       `<div class='col-3'><a href='${imageLink}'><img src='${imageLink}' alt='image ${++count}'></a><br><a class="delete-link"  aria-label="Delete Button" href=javascript:removePic('${
@@ -129,18 +171,14 @@ $.ajax(settings).done(function(response) {
         var image = obj.image;
         var gifOutput = document.getElementById("output");
         gifOutput.src = image;
-       // runFF();
+        // runFF();
       }
     }
-    
   );
- 
 });
 
-
-
-
-
-//FILEPICKER 
+//FILEPICKER
 const fileInput = document.getElementById("file-input");
-fileInput.addEventListener("change", e => doSomethingWithFiles(e.target.files));
+fileInput.addEventListener("change", e =>
+  doSomethingWithImage(e.target.files[0])
+);
